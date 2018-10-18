@@ -2,6 +2,9 @@ package com.telerikacademy.drivingcardserver.controllers;
 
 
 import com.telerikacademy.drivingcardserver.models.CardApplication;
+import com.telerikacademy.drivingcardserver.services.userservice.base.CardApplicationService;
+import com.telerikacademy.drivingcardserver.services.userservice.base.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,24 +13,30 @@ import java.util.List;
 @RequestMapping("api/applications")
 public class CardApplicationController {
 
+ private CardApplicationService CardApplicationService;
+
+ @Autowired
+ public CardApplicationController(UserService userService) {
+     this.CardApplicationService = CardApplicationService;
+ }
     @GetMapping
     public List<CardApplication> getAllApplications() {
-        return null;
+        return CardApplicationService.getAllApplications();
     }
 
     @GetMapping("/{id}")
     public CardApplication getApplicationByID(@PathVariable int id) {
-     return null;
+        return CardApplicationService.getApplicationByID(id);
     }
 
     @PostMapping
     public CardApplication createCardApplication(@RequestBody CardApplication newCardApplication) {
-        return null;
+        return CardApplicationService.createCardApplication(newCardApplication);
     }
 
     @PutMapping("/{id}")
     public CardApplication updateCardApplication (@PathVariable int id,
                                                   @RequestBody CardApplication updatedCardApplication) {
-        return null;
+        return CardApplicationService.updateCardApplication(id, updatedCardApplication);
     }
 }
