@@ -1,7 +1,7 @@
 package com.telerikacademy.drivingcardserver;
 
 import com.telerikacademy.drivingcardserver.models.CardApplication;
-import com.telerikacademy.drivingcardserver.models.CardApplicationDetails;
+import com.telerikacademy.drivingcardserver.models.PersonalDetails;
 import com.telerikacademy.drivingcardserver.models.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -22,7 +22,7 @@ public class DrivingCardServerApplication {
                 .configure()
                 .addAnnotatedClass(User.class)
                 .addAnnotatedClass(CardApplication.class)
-                .addAnnotatedClass(CardApplicationDetails.class)
+                .addAnnotatedClass(PersonalDetails.class)
                 .buildSessionFactory();
     }
 }

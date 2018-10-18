@@ -1,17 +1,20 @@
 package com.telerikacademy.drivingcardserver.models;
 
 import javax.persistence.*;
-import java.awt.*;
-import java.io.Serializable;
 import java.sql.Blob;
 import java.util.Date;
 
 @Entity
-@Table(name = "card_application_details")
-public class CardApplicationDetails  {
+@Table(name = "personal_details")
+public class PersonalDetails {
+
+    public PersonalDetails () {
+
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private int id;
 
     @Column(name = "driverID")
@@ -19,14 +22,8 @@ public class CardApplicationDetails  {
     @Column(name = "first_name_latin")
     private String firstNameLatin;
 
-    @Column(name = "first_name_cyrillic")
-    private String firstNameCyrillic;
-
     @Column(name = "surname_latin")
     private String surNameLatin;
-
-    @Column(name = "surname_cyrillic")
-    private String surNameCyrilic;
 
     @Column(name = "birth_date")
     private Date driverBirthDate;
@@ -69,4 +66,9 @@ public class CardApplicationDetails  {
     @Column(name = "date_of_expiry")
     private Date dateOfExpiry;
 
+    @Column(name = "date_lost_or_stolen")
+    private Date dateOfLoss;
+
+    @Column(name = "place_lost_or_stolen")
+    private String placeOfLoss;
 }

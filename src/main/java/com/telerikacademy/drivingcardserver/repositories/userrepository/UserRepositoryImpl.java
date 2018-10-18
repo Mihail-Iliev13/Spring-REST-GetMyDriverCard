@@ -49,10 +49,10 @@ public class UserRepositoryImpl implements UserRepository {
                 Session session =  sessionFactory.openSession()) {
 
             session.beginTransaction();
-            CardApplication newCardApplication = updatedUser.getCardApplication();
+            CardApplication newCardApplication = updatedUser.getPendingCardApplication();
             session.save(newCardApplication);
             userToBeUpdated = getUserByEmail(email);
-            userToBeUpdated.setCardApplication(newCardApplication);
+            userToBeUpdated.addCardApplication(newCardApplication);
             session.update(userToBeUpdated);
             session.getTransaction().commit();
         }
