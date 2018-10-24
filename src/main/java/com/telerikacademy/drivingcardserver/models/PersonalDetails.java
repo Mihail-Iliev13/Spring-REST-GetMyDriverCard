@@ -1,7 +1,6 @@
 package com.telerikacademy.drivingcardserver.models;
 
 import javax.persistence.*;
-import java.sql.Blob;
 import java.util.Date;
 
 @Entity
@@ -38,20 +37,25 @@ public class PersonalDetails {
     private String email;
 
     @Column(name = "selfie_image")
-    private Blob selfie;
+    @Lob
+    private byte[] selfie;
 
     @Column(name = "id_card_image")
+    @Lob
     private byte[] idCardImage;
 
     @Column(name = "driving_license_image")
+    @Lob
     private byte[] drivingLicenseImage;
 
     @Column(name = "signature")
+    @Lob
     private byte[] signature;
 
 
     //Optional fields
     @Column(name = "old_card_image")
+    @Lob
     private byte[] previousCardImage;
 
     @Column(name = "country_issued_card")

@@ -31,10 +31,9 @@ public class CardApplication {
     @Column(name = "date_of_submission")
     private Date dateOfSubmission;
 
-    /*TODO: Ask pesho or nadya about it*/
-//    @OneToOne(targetEntity = User.class)
-//    @JoinColumn(name = "user_email")
-//    private User user;
+    @ManyToOne(targetEntity = User.class)
+    @JoinColumn(name = "users_user_email")
+    private User user;
 
     public CardApplicationStatus getStatus() {
         return status;

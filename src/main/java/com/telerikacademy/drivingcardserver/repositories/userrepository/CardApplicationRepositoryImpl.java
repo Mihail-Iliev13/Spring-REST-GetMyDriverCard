@@ -5,11 +5,17 @@ import com.telerikacademy.drivingcardserver.models.User;
 import com.telerikacademy.drivingcardserver.repositories.userrepository.base.CardApplicationRepository;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.engine.jdbc.BlobProxy;
+import org.hibernate.validator.constraints.pl.REGON;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
 import javax.smartcardio.Card;
 import java.util.List;
 
+@Repository
 public class CardApplicationRepositoryImpl implements CardApplicationRepository {
     @Autowired
     private SessionFactory sessionFactory;
@@ -21,7 +27,15 @@ public class CardApplicationRepositoryImpl implements CardApplicationRepository 
                 Session session = sessionFactory.openSession()) {
 
             session.beginTransaction();
-            CardApps = sessionFactory.getCurrentSession().createCriteria(CardApplication.class).list();
+
+            CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+            CriteriaQuery<CardApplication> criteria = criteriaBuilder.createQuery(CardApplication.class);
+
+            criteria.from(CardApplication.class);
+
+            CardApps = session.createQuery(criteria)
+                    .getResultList();
+
             session.getTransaction().commit();
         }
         return CardApps;

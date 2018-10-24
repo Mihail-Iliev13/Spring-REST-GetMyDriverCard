@@ -16,8 +16,8 @@ public class CardApplicationController {
  private CardApplicationService CardApplicationService;
 
  @Autowired
- public CardApplicationController(UserService userService) {
-     this.CardApplicationService = CardApplicationService;
+ public CardApplicationController(CardApplicationService service) {
+     this.CardApplicationService = service;
  }
     @GetMapping
     public List<CardApplication> getAllApplications() {

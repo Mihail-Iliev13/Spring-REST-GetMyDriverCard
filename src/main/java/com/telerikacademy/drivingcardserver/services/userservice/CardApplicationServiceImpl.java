@@ -4,9 +4,11 @@ import com.telerikacademy.drivingcardserver.models.CardApplication;
 import com.telerikacademy.drivingcardserver.repositories.userrepository.CardApplicationRepositoryImpl;
 import com.telerikacademy.drivingcardserver.services.userservice.base.CardApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class CardApplicationServiceImpl implements CardApplicationService {
     private CardApplicationRepositoryImpl CardApplicationRepository;
 
@@ -16,7 +18,7 @@ public class CardApplicationServiceImpl implements CardApplicationService {
     }
     @Override
     public List<CardApplication> getAllApplications() {
-        return null;
+        return CardApplicationRepository.getAllApplications();
     }
 
     @Override

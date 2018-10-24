@@ -35,7 +35,7 @@ public class UserRepositoryImpl implements UserRepository {
                 Session session =  sessionFactory.openSession()) {
 
             session.beginTransaction();
-            user = (User) session.save(newUser);
+            session.save(newUser);
             session.getTransaction().commit();
         }
 
@@ -48,13 +48,13 @@ public class UserRepositoryImpl implements UserRepository {
         try (
                 Session session =  sessionFactory.openSession()) {
 
-            session.beginTransaction();
-            CardApplication newCardApplication = updatedUser.getPendingCardApplication();
-            session.save(newCardApplication);
-            userToBeUpdated = getUserByEmail(email);
-            userToBeUpdated.addCardApplication(newCardApplication);
-            session.update(userToBeUpdated);
-            session.getTransaction().commit();
+//            session.beginTransaction();
+//            CardApplication newCardApplication = updatedUser.getPendingCardApplication();
+//            session.save(newCardApplication);
+//            userToBeUpdated = getUserByEmail(email);
+//            userToBeUpdated.addCardApplication(newCardApplication);
+//            session.update(userToBeUpdated);
+//            session.getTransaction().commit();
         }
         return userToBeUpdated;
     }
