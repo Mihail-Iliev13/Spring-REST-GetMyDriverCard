@@ -5,9 +5,11 @@ import com.telerikacademy.drivingcardserver.repositories.userrepository.CardAppl
 import com.telerikacademy.drivingcardserver.repositories.userrepository.base.CardApplicationRepository;
 import com.telerikacademy.drivingcardserver.services.userservice.base.CardApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class CardApplicationServiceImpl implements CardApplicationService {
     private CardApplicationRepositoryImpl CardApplicationRepository;
 

@@ -1,18 +1,19 @@
 package com.telerikacademy.drivingcardserver.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.util.ArrayList;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements Serializable {
 
     public User () {
 
     }
-
     public User (String email, String password, UserRole userRole) {
         this.email = email;
         this.password = password;
@@ -21,26 +22,20 @@ public class User {
 
     @Id
     @Column(name = "user_email")
+    @NotNull
     private String email;
 
     @Column(name = "user_password")
+    @NotNull
     private String password;
 
     @Column(name = "user_role")
     @Enumerated(EnumType.STRING)
+    @NotNull
     private UserRole userRole;
 
-    @OneToMany(targetEntity = CardApplication.class, fetch = FetchType.EAGER)
-    @JoinColumn(name = "card_applications_id")
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private List<CardApplication> cardApplications;
-
-    public CardApplication getPendingCardApplication() {
-        return null;
-    }
-
-    public void addCardApplication(CardApplication newCardApplication) {
-        cardApplications.add(newCardApplication);
-    }
 
     public String getEmail() {
         return email;
@@ -54,7 +49,8 @@ public class User {
         return userRole;
     }
 
+    @JsonIgnore
     public List<CardApplication> getCardApplications() {
-        return new ArrayList<>(cardApplications);
+        return cardApplications;
     }
 }

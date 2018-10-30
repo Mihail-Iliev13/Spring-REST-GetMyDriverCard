@@ -21,7 +21,7 @@ public class UserController {
         return userService.getUserByEmail(email);
     }
 
-    @PutMapping("/email")
+    @PutMapping("/{email}")
     public User updateUserCardApplication(@PathVariable String email, @RequestBody User updatedUser) {
         return userService.updateUserCardApplication(email, updatedUser);
     }
