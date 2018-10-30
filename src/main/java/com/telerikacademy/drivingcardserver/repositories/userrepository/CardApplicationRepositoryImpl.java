@@ -39,7 +39,6 @@ public class CardApplicationRepositoryImpl implements CardApplicationRepository 
         }
         return CardApp;
     }
-
     @Override
     public CardApplication createCardApplication(CardApplication newCardApplication) {
         CardApplication CardApp = null;
