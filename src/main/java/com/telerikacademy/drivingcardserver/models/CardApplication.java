@@ -26,7 +26,7 @@ public class CardApplication {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "reason")
-    private Reason reason;
+    private CardApplicationReason cardApplicationReason;
 
     @Column(name = "date_of_submission")
     private Date dateOfSubmission;
@@ -35,7 +35,51 @@ public class CardApplication {
     @JoinColumn(name = "users_user_email")
     private User user;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public CardApplicationStatus getStatus() {
         return status;
+    }
+
+    public void setStatus(CardApplicationStatus status) {
+        this.status = status;
+    }
+
+    public PersonalDetails getDetails() {
+        return details;
+    }
+
+    public void setDetails(PersonalDetails details) {
+        this.details = details;
+    }
+
+    public CardApplicationReason getCardApplicationReason() {
+        return cardApplicationReason;
+    }
+
+    public Date getDateOfSubmission() {
+        return dateOfSubmission;
+    }
+
+    public void setDateOfSubmission(Date dateOfSubmission) {
+        this.dateOfSubmission = dateOfSubmission;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setCardApplicationReason(CardApplicationReason cardApplicationReason) {
+        this.cardApplicationReason = cardApplicationReason;
     }
 }

@@ -1,5 +1,6 @@
 package com.telerikacademy.drivingcardserver.services.userservice;
 
+import com.telerikacademy.drivingcardserver.models.CardApplication;
 import com.telerikacademy.drivingcardserver.models.User;
 import com.telerikacademy.drivingcardserver.repositories.userrepository.base.UserRepository;
 import com.telerikacademy.drivingcardserver.services.userservice.base.UserService;
@@ -28,7 +29,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User updateUserCardApplication(String email, User userToBeUpdated) {
-        return userRepository.updateUserCardApplication(email, userToBeUpdated);
+    public User updateUserCardApplication(String email, CardApplication cardApplication) {
+        return userRepository.updateUserCardApplication(email, cardApplication);
     }
 }

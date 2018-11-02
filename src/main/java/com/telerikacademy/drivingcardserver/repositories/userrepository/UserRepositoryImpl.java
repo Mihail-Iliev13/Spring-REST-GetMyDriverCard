@@ -1,12 +1,16 @@
 package com.telerikacademy.drivingcardserver.repositories.userrepository;
 
 import com.telerikacademy.drivingcardserver.models.CardApplication;
+import com.telerikacademy.drivingcardserver.models.PersonalDetails;
 import com.telerikacademy.drivingcardserver.models.User;
 import com.telerikacademy.drivingcardserver.repositories.userrepository.base.UserRepository;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import javax.smartcardio.Card;
+import java.util.Date;
 
 @Repository
 public class UserRepositoryImpl implements UserRepository {
@@ -43,19 +47,24 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public User updateUserCardApplication(String email, User updatedUser) {
+    public User updateUserCardApplication(String email, CardApplication cardApplication) {
         User userToBeUpdated = null;
         try (
                 Session session =  sessionFactory.openSession()) {
 
-//            session.beginTransaction();
-//            CardApplication newCardApplication = updatedUser.getPendingCardApplication();
-//            session.save(newCardApplication);
-//            userToBeUpdated = getUserByEmail(email);
-//            userToBeUpdated.addCardApplication(newCardApplication);
-//            session.update(userToBeUpdated);
-//            session.getTransaction().commit();
+            session.beginTransaction();
+
+            PersonalDetails personalDetails = cardApplication.getDetails();
+            userToBeUpdated = session.get(User.class, email);
+            cardApplication.setUser(userToBeUpdated);
+
+            session.save(personalDetails);
+            session.save(cardApplication);
+            session.update(userToBeUpdated);
+            
+            session.getTransaction().commit();
         }
+
         return userToBeUpdated;
     }
 }

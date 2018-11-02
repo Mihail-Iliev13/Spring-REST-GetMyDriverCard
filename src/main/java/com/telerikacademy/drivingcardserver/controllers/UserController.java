@@ -1,5 +1,6 @@
 package com.telerikacademy.drivingcardserver.controllers;
 
+import com.telerikacademy.drivingcardserver.models.CardApplication;
 import com.telerikacademy.drivingcardserver.models.User;
 import com.telerikacademy.drivingcardserver.services.userservice.base.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +23,8 @@ public class UserController {
     }
 
     @PutMapping("/{email}")
-    public User updateUserCardApplication(@PathVariable String email, @RequestBody User updatedUser) {
-        return userService.updateUserCardApplication(email, updatedUser);
+    public User updateUserCardApplication(@PathVariable String email, @RequestBody CardApplication cardApplication) {
+        return userService.updateUserCardApplication(email, cardApplication);
     }
 
     @PostMapping()
