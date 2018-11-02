@@ -1,4 +1,4 @@
-package com.telerikacademy.drivingcardserver.models;
+package com.telerikacademy.drivingcardserver.models.enums;
 
 public enum CardApplicationReason {
     NEW_CARD("New"),EXCHANGE("Exchange"),LOST("Lost"),

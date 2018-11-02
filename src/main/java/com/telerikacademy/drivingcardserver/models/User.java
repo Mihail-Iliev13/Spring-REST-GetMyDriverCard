@@ -1,6 +1,7 @@
 package com.telerikacademy.drivingcardserver.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.telerikacademy.drivingcardserver.models.enums.UserRole;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

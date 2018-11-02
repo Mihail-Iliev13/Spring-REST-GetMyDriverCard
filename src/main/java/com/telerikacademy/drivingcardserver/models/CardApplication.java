@@ -1,5 +1,8 @@
 package com.telerikacademy.drivingcardserver.models;
 
+import com.telerikacademy.drivingcardserver.models.enums.CardApplicationReason;
+import com.telerikacademy.drivingcardserver.models.enums.CardApplicationStatus;
+
 import javax.persistence.*;
 import java.util.Date;
 
