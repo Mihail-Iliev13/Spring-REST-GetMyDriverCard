@@ -37,6 +37,7 @@ public class User implements Serializable {
     private UserRole userRole;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<CardApplication> cardApplications;
 
     public String getEmail() {
@@ -51,16 +52,8 @@ public class User implements Serializable {
         return userRole;
     }
 
-    @JsonIgnore
-        public List<CardApplication> getCardApplications() {
+    public List<CardApplication> getCardApplications() {
         return cardApplications;
-    }
-
-    public void addCardApplication(CardApplication cardApplication) {
-        if (cardApplications == null) {
-            cardApplications = new ArrayList<>();
-        }
-        this.cardApplications.add(cardApplication);
     }
 
     public void setEmail(String misho) {

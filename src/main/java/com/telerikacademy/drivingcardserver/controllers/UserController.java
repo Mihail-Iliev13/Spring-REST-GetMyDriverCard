@@ -1,10 +1,12 @@
 package com.telerikacademy.drivingcardserver.controllers;
 
 import com.telerikacademy.drivingcardserver.models.CardApplication;
+import com.telerikacademy.drivingcardserver.models.ImageModel;
 import com.telerikacademy.drivingcardserver.models.User;
 import com.telerikacademy.drivingcardserver.services.userservice.base.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
 
 @RestController
 @RequestMapping("users")
@@ -32,4 +34,13 @@ public class UserController {
         return userService.createUser(newUser);
     }
 
+    @GetMapping("/pending/{email}")
+    public CardApplication getPendingApplication(@PathVariable String email) {
+        return userService.getUserPendingApplication(email);
+    }
+
+    @PostMapping("/image/{email}")
+    public void saveImage(@PathVariable String email, @RequestBody ImageModel image){
+        userService.saveImage(email, image);
+    }
 }

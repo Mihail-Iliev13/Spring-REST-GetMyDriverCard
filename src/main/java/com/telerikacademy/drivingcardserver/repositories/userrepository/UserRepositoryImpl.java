@@ -1,6 +1,7 @@
 package com.telerikacademy.drivingcardserver.repositories.userrepository;
 
 import com.telerikacademy.drivingcardserver.models.CardApplication;
+import com.telerikacademy.drivingcardserver.models.ImageModel;
 import com.telerikacademy.drivingcardserver.models.PersonalDetails;
 import com.telerikacademy.drivingcardserver.models.User;
 import com.telerikacademy.drivingcardserver.repositories.userrepository.base.UserRepository;
@@ -8,9 +9,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import javax.smartcardio.Card;
-import java.util.Date;
 
 @Repository
 public class UserRepositoryImpl implements UserRepository {
@@ -66,5 +64,20 @@ public class UserRepositoryImpl implements UserRepository {
         }
 
         return userToBeUpdated;
+    }
+
+    @Override
+    public void saveImage(CardApplication cardApplication, ImageModel image) {
+        try (
+                Session session =  sessionFactory.openSession()) {
+
+            session.beginTransaction();
+            PersonalDetails personalDetails = cardApplication.getDetails();
+            image.setPersonalDetails(personalDetails);
+            image.setId(1);
+            session.update(personalDetails);
+            session.save(image);
+            session.getTransaction().commit();
+        }
     }
 }

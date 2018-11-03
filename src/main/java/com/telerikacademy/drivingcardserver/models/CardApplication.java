@@ -1,5 +1,6 @@
 package com.telerikacademy.drivingcardserver.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.telerikacademy.drivingcardserver.models.enums.CardApplicationReason;
 import com.telerikacademy.drivingcardserver.models.enums.CardApplicationStatus;
 
@@ -32,6 +33,7 @@ public class CardApplication {
     private CardApplicationReason cardApplicationReason;
 
     @Column(name = "date_of_submission")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private Date dateOfSubmission;
 
     @ManyToOne(targetEntity = User.class)

@@ -1,9 +1,25 @@
 package com.telerikacademy.drivingcardserver.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ByteArraySerializer;
+import com.sun.xml.internal.ws.util.ByteArrayBuffer;
+import javassist.bytecode.ByteArray;
+import org.hibernate.type.descriptor.java.ByteArrayTypeDescriptor;
+import org.springframework.core.codec.ByteArrayDecoder;
+import org.springframework.core.codec.ByteArrayEncoder;
 
 import javax.persistence.*;
+import javax.print.DocFlavor;
+import javax.validation.constraints.Null;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "personal_details")
@@ -35,27 +51,27 @@ public class PersonalDetails {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "selfie_image")
-    @Lob
-    private byte[] selfie;
-
-    @Column(name = "id_card_image")
-    @Lob
-    private byte[] idCardImage;
-
-    @Column(name = "driving_license_image")
-    @Lob
-    private byte[] drivingLicenseImage;
+//    @Column(name = "selfie_image")
+//    @Lob
+//    private byte[] selfie;
+//
+//    @Column(name = "id_card_image")
+//    @Lob
+//    private byte[] idCardImage;
+//
+//    @Column(name = "driving_license_image")
+//    @Lob
+//    private byte[] drivingLicenseImage;
 
     @Column(name = "signature")
     @Lob
     private byte[] signature;
 
 
-    //Optional fields
-    @Column(name = "old_card_image")
-    @Lob
-    private byte[] previousCardImage;
+//    //Optional fields
+//    @Column(name = "old_card_image")
+//    @Lob
+//    private byte[] previousCardImage;
 
     @Column(name = "country_issued_card")
     private String countryIssuedCard;
@@ -74,6 +90,14 @@ public class PersonalDetails {
 
     @Column(name = "place_lost_or_stolen")
     private String placeOfLoss;
+
+    @OneToMany(mappedBy = "personalDetails", fetch = FetchType.LAZY)
+    private List<ImageModel> images;
+
+    @JsonIgnore
+    public List<ImageModel> getImages() {
+        return images;
+    }
 
     public int getId() {
         return id;
@@ -139,30 +163,32 @@ public class PersonalDetails {
         this.email = email;
     }
 
-    public byte[] getSelfie() {
-        return selfie;
-    }
+//    public byte[] getSelfie() {
+//        return selfie;
+//    }
+//
+//    public void setSelfie(byte[] selfie) {
+//        this.selfie = selfie;
+//    }
+//
+//    public byte[] getIdCardImage() {
+//        return idCardImage;
+//    }
+//
+//    public void setIdCardImage(byte[] idCardImage) {
+//        this.idCardImage = idCardImage;
+//    }
+//
+//    public byte[] getDrivingLicenseImage() {
+//        return drivingLicenseImage;
+//    }
+//
+//    public void setDrivingLicenseImage(byte[] drivingLicenseImage) {
+//        this.drivingLicenseImage = drivingLicenseImage;
+//    }
 
-    public void setSelfie(byte[] selfie) {
-        this.selfie = selfie;
-    }
 
-    public byte[] getIdCardImage() {
-        return idCardImage;
-    }
-
-    public void setIdCardImage(byte[] idCardImage) {
-        this.idCardImage = idCardImage;
-    }
-
-    public byte[] getDrivingLicenseImage() {
-        return drivingLicenseImage;
-    }
-
-    public void setDrivingLicenseImage(byte[] drivingLicenseImage) {
-        this.drivingLicenseImage = drivingLicenseImage;
-    }
-
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     public byte[] getSignature() {
         return signature;
     }
@@ -171,13 +197,13 @@ public class PersonalDetails {
         this.signature = signature;
     }
 
-    public byte[] getPreviousCardImage() {
-        return previousCardImage;
-    }
+//    public byte[] getPreviousCardImage() {
+//        return previousCardImage;
+//    }
 
-    public void setPreviousCardImage(byte[] previousCardImage) {
-        this.previousCardImage = previousCardImage;
-    }
+//    public void setPreviousCardImage(byte[] previousCardImage) {
+//        this.previousCardImage = previousCardImage;
+//    }
 
     public String getCountryIssuedCard() {
         return countryIssuedCard;

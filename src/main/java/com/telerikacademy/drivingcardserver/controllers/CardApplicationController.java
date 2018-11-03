@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/applications")
+@RequestMapping("applications")
 public class CardApplicationController {
 
  private CardApplicationService CardApplicationService;
