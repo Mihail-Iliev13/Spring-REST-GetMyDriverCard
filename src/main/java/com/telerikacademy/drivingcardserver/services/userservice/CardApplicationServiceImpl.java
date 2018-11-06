@@ -2,7 +2,7 @@ package com.telerikacademy.drivingcardserver.services.userservice;
 
 import com.telerikacademy.drivingcardserver.models.CardApplication;
 import com.telerikacademy.drivingcardserver.models.enums.CardApplicationStatus;
-import com.telerikacademy.drivingcardserver.repositories.userrepository.CardApplicationRepositoryImpl;
+import com.telerikacademy.drivingcardserver.repositories.cardapplicationrepository.CardApplicationRepositoryImpl;
 import com.telerikacademy.drivingcardserver.services.userservice.base.CardApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -39,8 +38,8 @@ public class CardApplicationServiceImpl implements CardApplicationService {
     }
 
     @Override
-    public CardApplication updateCardApplication(int id, CardApplication updatedCardApplication) {
-        return cardApplicationRepository.updateCardApplication(id,updatedCardApplication);
+    public CardApplication updateCardApplicationStatus(int id, CardApplicationStatus status) {
+        return cardApplicationRepository.updateCardApplication(id,status);
     }
 
     @Override

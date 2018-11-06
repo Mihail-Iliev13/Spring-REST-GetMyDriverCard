@@ -2,6 +2,7 @@ package com.telerikacademy.drivingcardserver.controllers;
 
 
 import com.telerikacademy.drivingcardserver.models.CardApplication;
+import com.telerikacademy.drivingcardserver.models.enums.CardApplicationStatus;
 import com.telerikacademy.drivingcardserver.services.userservice.base.CardApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +24,9 @@ public class CardApplicationController {
 
     @GetMapping
     public List<CardApplication> getAllApplications() {
-        return cardApplicationService.getAllApplications();
+
+     List<CardApplication> cardApplications = cardApplicationService.getAllApplications();
+     return cardApplications;
     }
 
     @GetMapping("/{id}")
@@ -47,12 +50,6 @@ public class CardApplicationController {
         return cardApplicationService.createCardApplication(newCardApplication);
     }
 
-    @PutMapping("/{id}")
-    public CardApplication updateCardApplication (@PathVariable int id,
-                                                  @RequestBody CardApplication updatedCardApplication) {
-        return cardApplicationService.updateCardApplication(id, updatedCardApplication);
-    }
-
     @GetMapping("/filter/name/{name}")
     public List<CardApplication> getFilteredByName(@PathVariable String name) {
         return cardApplicationService.getFilteredByName(name);
@@ -66,5 +63,10 @@ public class CardApplicationController {
     @GetMapping("/filter/status/{status}")
     public List<CardApplication> getFilteredByStatus(@PathVariable String status){
      return cardApplicationService.getFilteredByStatus(status);
+    }
+
+    @PutMapping("{id}")
+    public CardApplication updateApplicationStatus (@PathVariable int id, @RequestBody CardApplicationStatus status) {
+        return cardApplicationService.updateCardApplicationStatus(id, status);
     }
 }

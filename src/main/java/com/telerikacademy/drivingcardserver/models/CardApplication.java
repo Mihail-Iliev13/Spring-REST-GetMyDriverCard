@@ -33,7 +33,7 @@ public class CardApplication {
     private CardApplicationReason cardApplicationReason;
 
     @Column(name = "date_of_submission")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", timezone = "Europe/Sofia")
     private Date dateOfSubmission;
 
     @ManyToOne(targetEntity = User.class)
