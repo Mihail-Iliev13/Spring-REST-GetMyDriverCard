@@ -11,5 +11,4 @@ public interface UserService {
     User createUser(User newUser);
     User updateUserCardApplication(String email, CardApplication userToBeUpdated);
     CardApplication getUserPendingApplication(String email);
-    void saveImage(String email, ImageModel image);
 }

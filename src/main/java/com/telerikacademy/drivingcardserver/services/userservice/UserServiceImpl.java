@@ -47,10 +47,4 @@ public class UserServiceImpl implements UserService {
         }
         return null;
     }
-
-    @Override
-    public void saveImage(String email, ImageModel image) {
-        CardApplication cardApplication = getUserPendingApplication(email);
-        userRepository.saveImage(cardApplication, image);
-    }
 }

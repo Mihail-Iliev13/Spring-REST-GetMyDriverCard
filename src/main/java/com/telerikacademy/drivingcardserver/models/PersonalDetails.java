@@ -91,7 +91,7 @@ public class PersonalDetails {
     @Column(name = "place_lost_or_stolen")
     private String placeOfLoss;
 
-    @OneToMany(mappedBy = "personalDetails", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "personalDetails", fetch = FetchType.EAGER)
     private List<ImageModel> images;
 
     @JsonIgnore
@@ -187,8 +187,6 @@ public class PersonalDetails {
 //        this.drivingLicenseImage = drivingLicenseImage;
 //    }
 
-
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     public byte[] getSignature() {
         return signature;
     }

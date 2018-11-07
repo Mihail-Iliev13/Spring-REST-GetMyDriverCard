@@ -38,9 +38,4 @@ public class UserController {
     public CardApplication getPendingApplication(@PathVariable String email) {
         return userService.getUserPendingApplication(email);
     }
-
-    @PostMapping("/image/{email}")
-    public void saveImage(@PathVariable String email, @RequestBody ImageModel image){
-        userService.saveImage(email, image);
-    }
 }

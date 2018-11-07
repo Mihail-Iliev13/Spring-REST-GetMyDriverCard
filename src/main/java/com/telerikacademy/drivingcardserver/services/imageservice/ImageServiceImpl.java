@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.awt.*;
+import java.util.List;
+
 
 @Service
 public class ImageServiceImpl implements ImageService {
@@ -28,4 +30,10 @@ public class ImageServiceImpl implements ImageService {
         image.setPersonalDetails(personalDetails);
         return imageRepository.saveImage(image);
     }
+
+    @Override
+    public List<ImageModel> getImagesByApplicationByID(int applicationID) {
+        return imageRepository.getImageApplicationByID(applicationID);
+    }
+
 }

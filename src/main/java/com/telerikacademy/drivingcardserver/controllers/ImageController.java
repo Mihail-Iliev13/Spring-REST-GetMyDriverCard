@@ -7,6 +7,8 @@ import com.telerikacademy.drivingcardserver.services.userservice.base.UserServic
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("images")
 public class ImageController  {
@@ -24,5 +26,10 @@ public class ImageController  {
     public ImageModel saveImage(@PathVariable String email, @RequestBody ImageModel image) {
         CardApplication cardApplication = userService.getUserPendingApplication(email);
         return imageService.saveImage(cardApplication, image);
+    }
+
+    @GetMapping("/{id}")
+    public List<ImageModel> getImagesByApplicationID(@PathVariable int id){
+        return imageService.getImagesByApplicationByID(id);
     }
 }

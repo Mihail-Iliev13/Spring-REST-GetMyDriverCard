@@ -1,5 +1,6 @@
 package com.telerikacademy.drivingcardserver.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.telerikacademy.drivingcardserver.models.enums.ImageAttribute;
 
 import javax.persistence.*;
@@ -51,6 +52,7 @@ public class ImageModel {
         this.image = image;
     }
 
+    @JsonIgnore
     public PersonalDetails getPersonalDetails() {
         return personalDetails;
     }

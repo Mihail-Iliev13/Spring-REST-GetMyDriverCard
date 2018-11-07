@@ -52,6 +52,7 @@ public class User implements Serializable {
         return userRole;
     }
 
+    @JsonIgnore
     public List<CardApplication> getCardApplications() {
         return cardApplications;
     }
