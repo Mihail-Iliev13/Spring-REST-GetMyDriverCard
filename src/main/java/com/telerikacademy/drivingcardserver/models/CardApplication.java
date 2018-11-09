@@ -15,6 +15,14 @@ public class CardApplication {
 
     }
 
+    public CardApplication (User user,int id,Date date,CardApplicationStatus status,PersonalDetails persDetails) {
+this.id=id;
+this.user=user;
+this.status=status;
+this.dateOfSubmission=date;
+this.details=persDetails;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")

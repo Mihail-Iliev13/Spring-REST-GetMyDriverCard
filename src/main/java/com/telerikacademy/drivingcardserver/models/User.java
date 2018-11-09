@@ -22,6 +22,7 @@ public class User implements Serializable {
         this.userRole = userRole;
     }
 
+
     @Id
     @Column(name = "user_email")
     @NotNull

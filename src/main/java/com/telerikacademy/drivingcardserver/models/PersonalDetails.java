@@ -28,7 +28,11 @@ public class PersonalDetails {
     public PersonalDetails () {
 
     }
-
+    public PersonalDetails (String id,String firstNameLatin,String surNameLatin ) {
+this.driverID=id;
+this.firstNameLatin=firstNameLatin;
+this.surNameLatin=surNameLatin;
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
