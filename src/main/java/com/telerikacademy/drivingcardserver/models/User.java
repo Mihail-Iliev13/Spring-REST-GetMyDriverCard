@@ -64,4 +64,12 @@ public class User implements Serializable {
     public void setEmail(String misho) {
         this.email = misho;
     }
+
+    public void setCardApplication(CardApplication cardApp) {
+        if(cardApplications == null){
+            cardApplications= new ArrayList<>();
+            this.cardApplications.add(cardApp);
+        }else
+        this.cardApplications.add(cardApp);
+    }
 }

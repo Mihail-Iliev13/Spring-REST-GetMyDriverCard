@@ -5,6 +5,7 @@ import com.telerikacademy.drivingcardserver.models.PersonalDetails;
 import com.telerikacademy.drivingcardserver.models.User;
 import com.telerikacademy.drivingcardserver.models.enums.CardApplicationStatus;
 import com.telerikacademy.drivingcardserver.models.enums.UserRole;
+import com.telerikacademy.drivingcardserver.repositories.cardapplicationrepository.CardApplicationRepositoryImpl;
 import com.telerikacademy.drivingcardserver.repositories.userrepository.UserRepositoryImpl;
 import com.telerikacademy.drivingcardserver.services.userservice.UserServiceImpl;
 import com.telerikacademy.drivingcardserver.services.userservice.base.UserService;
@@ -37,6 +38,7 @@ public class GetMyDriverCardApp_UserService_TESTS {
 
 
     );
+
 
     @Test
     public void getUserByEmailShouldReturnUserByEmail()  {
@@ -91,22 +93,30 @@ public class GetMyDriverCardApp_UserService_TESTS {
         Assert.assertEquals(cardApp,result.getCardApplications());
 
     }
-   /* @Test
-    public void getUserPendingApplicationShouldReturnPendingApplications()  {
+   @Test
+    public void getUserPendingApplicationShouldReturnPendingApplications() throws ParseException {
         // Arrange
+       String email = "todor@gmail.com";
+       String date1="2011-11-11";
+       DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+       Date filterDate = dateFormat.parse(date1);
+       String date1s = dateFormat.format(filterDate);
+       Date date2= new Date(12,12,2012);
+       PersonalDetails persDetails= new PersonalDetails("9602180077","Todor","Slavov");
+       CardApplication cardApp =new CardApplication(u3,1,filterDate, CardApplicationStatus.NEW,persDetails);
+        u3.setCardApplication(cardApp);
         UserRepositoryImpl mockRepository= Mockito.mock(UserRepositoryImpl.class);
-        CardApplication cardApp=null;
-        Mockito.when(mockRepository.)
-                .thenReturn(defaultTestInput.get(1));
+        Mockito.when(mockRepository.getUserByEmail(email3))
+                .thenReturn(u3);
         UserService mockService=new UserServiceImpl(mockRepository);
 
 
 
         // Act
-        User result =mockService.updateUserCardApplication(email2,cardApp);
+        CardApplication result = mockService.getUserPendingApplication(email3);
 
         // Assert
-        Assert.assertEquals(cardApp,result.getCardApplications());
+        Assert.assertEquals(cardApp,result);
 
-    }*/
+    }
 }
