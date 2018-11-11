@@ -25,11 +25,6 @@ public class ImageController  {
 
     @PostMapping("/{email}")
     public ImageModel saveImage(@PathVariable String email, @RequestBody ImageModel image) {
-
-        if (image.getImageAttribute().equals(ImageAttribute.ID_CARD_IMAGE)) {
-            int b = 5;
-        }
-
         CardApplication cardApplication = userService.getUserPendingApplication(email);
         return imageService.saveImage(cardApplication, image);
     }

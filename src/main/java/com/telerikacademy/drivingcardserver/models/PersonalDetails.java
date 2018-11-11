@@ -28,11 +28,13 @@ public class PersonalDetails {
     public PersonalDetails () {
 
     }
+
     public PersonalDetails (String id,String firstNameLatin,String surNameLatin ) {
-this.driverID=id;
-this.firstNameLatin=firstNameLatin;
-this.surNameLatin=surNameLatin;
+        this.driverID=id;
+        this.firstNameLatin=firstNameLatin;
+        this.surNameLatin=surNameLatin;
     }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -87,9 +89,11 @@ this.surNameLatin=surNameLatin;
     private String cardNumber;
 
     @Column(name = "date_of_expiry")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private Date dateOfExpiry;
 
     @Column(name = "date_lost_or_stolen")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private Date dateOfLoss;
 
     @Column(name = "place_lost_or_stolen")
