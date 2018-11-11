@@ -21,7 +21,10 @@ public class User implements Serializable {
         this.password = password;
         this.userRole = userRole;
     }
-
+    public User (String email,UserRole userRole) {
+        this.email = email;
+        this.userRole = userRole;
+    }
 
     @Id
     @Column(name = "user_email")
