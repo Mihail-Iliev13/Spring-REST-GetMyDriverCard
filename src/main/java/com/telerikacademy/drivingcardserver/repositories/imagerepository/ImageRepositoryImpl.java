@@ -1,5 +1,6 @@
 package com.telerikacademy.drivingcardserver.repositories.imagerepository;
 
+import com.sun.org.apache.xpath.internal.operations.String;
 import com.telerikacademy.drivingcardserver.models.CardApplication;
 import com.telerikacademy.drivingcardserver.models.ImageModel;
 import com.telerikacademy.drivingcardserver.models.PersonalDetails;
@@ -25,7 +26,8 @@ public class ImageRepositoryImpl implements ImageRepository {
                 Session session =  sessionFactory.openSession()) {
 
             session.beginTransaction();
-            imageModel = (ImageModel) session.save(image);
+            int id = (int) session.save(image);
+            imageModel = session.get(ImageModel.class, id);
             session.getTransaction().commit();
         }
         return imageModel;

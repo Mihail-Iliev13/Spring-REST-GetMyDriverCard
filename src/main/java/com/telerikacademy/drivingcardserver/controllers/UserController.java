@@ -7,6 +7,8 @@ import com.telerikacademy.drivingcardserver.services.userservice.base.UserServic
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("users")
@@ -37,5 +39,10 @@ public class UserController {
     @GetMapping("/pending/{email}")
     public CardApplication getPendingApplication(@PathVariable String email) {
         return userService.getUserPendingApplication(email);
+    }
+
+    @GetMapping("/applications/{email}")
+    public List<CardApplication> getApplications (@PathVariable String email) {
+        return userService.getApplications(email);
     }
 }

@@ -1,7 +1,6 @@
 package com.telerikacademy.drivingcardserver.services.userservice;
 
 import com.telerikacademy.drivingcardserver.models.CardApplication;
-import com.telerikacademy.drivingcardserver.models.ImageModel;
 import com.telerikacademy.drivingcardserver.models.User;
 import com.telerikacademy.drivingcardserver.models.enums.CardApplicationStatus;
 import com.telerikacademy.drivingcardserver.repositories.userrepository.base.UserRepository;
@@ -9,7 +8,7 @@ import com.telerikacademy.drivingcardserver.services.userservice.base.UserServic
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.smartcardio.Card;
+import java.util.List;
 
 
 @Service
@@ -47,4 +46,10 @@ public class UserServiceImpl implements UserService {
         }
         return null;
     }
+
+    @Override
+    public List<CardApplication> getApplications(String email) {
+        return userRepository.getUserByEmail(email).getCardApplications();
+    }
+
 }

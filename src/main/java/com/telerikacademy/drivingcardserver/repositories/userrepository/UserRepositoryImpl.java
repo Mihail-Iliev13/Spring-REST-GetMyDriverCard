@@ -32,7 +32,6 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public User createUser(User newUser) {
 
-        User user = null;
         try (
                 Session session =  sessionFactory.openSession()) {
 
@@ -41,7 +40,7 @@ public class UserRepositoryImpl implements UserRepository {
             session.getTransaction().commit();
         }
 
-        return user;
+        return getUserByEmail(newUser.getEmail());
     }
 
     @Override

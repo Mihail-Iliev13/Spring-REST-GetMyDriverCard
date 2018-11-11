@@ -26,8 +26,7 @@ public class ImageServiceImpl implements ImageService {
 
     @Override
     public ImageModel saveImage(CardApplication cardApplication, ImageModel image) {
-        PersonalDetails personalDetails = cardApplication.getDetails();
-        image.setPersonalDetails(personalDetails);
+        image.setPersonalDetails(cardApplication.getDetails());
         return imageRepository.saveImage(image);
     }
 

@@ -17,6 +17,7 @@ public class ImageModel {
     @Enumerated(EnumType.STRING)
     @Column(name = "personal_details_attribute")
     private ImageAttribute imageAttribute;
+
     @Column(name = "image")
     private byte[] image;
 

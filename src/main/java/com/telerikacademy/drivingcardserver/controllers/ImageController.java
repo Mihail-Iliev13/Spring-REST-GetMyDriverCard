@@ -2,6 +2,7 @@ package com.telerikacademy.drivingcardserver.controllers;
 
 import com.telerikacademy.drivingcardserver.models.CardApplication;
 import com.telerikacademy.drivingcardserver.models.ImageModel;
+import com.telerikacademy.drivingcardserver.models.enums.ImageAttribute;
 import com.telerikacademy.drivingcardserver.services.imageservice.base.ImageService;
 import com.telerikacademy.drivingcardserver.services.userservice.base.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,11 @@ public class ImageController  {
 
     @PostMapping("/{email}")
     public ImageModel saveImage(@PathVariable String email, @RequestBody ImageModel image) {
+
+        if (image.getImageAttribute().equals(ImageAttribute.ID_CARD_IMAGE)) {
+            int b = 5;
+        }
+
         CardApplication cardApplication = userService.getUserPendingApplication(email);
         return imageService.saveImage(cardApplication, image);
     }

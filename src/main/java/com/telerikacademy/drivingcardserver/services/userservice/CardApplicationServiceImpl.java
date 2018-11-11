@@ -61,8 +61,13 @@ public class CardApplicationServiceImpl implements CardApplicationService {
         return cardApplicationRepository
                 .getAllApplications()
                 .stream()
-                .filter(a -> a.getDetails().getFirstNameLatin().contains(filterName)
-                        || a.getDetails().getSurNameLatin().contains(filterName))
+                .filter(a -> a.getDetails()
+                        .getFirstNameLatin()
+                        .toLowerCase()
+                        .contains(filterName.toLowerCase())
+                        || a.getDetails()
+                        .getSurNameLatin()
+                        .toLowerCase().contains(filterName.toLowerCase()))
                 .collect(Collectors.toList());
 
 //        List<CardApplication> allCardApplications = cardApplicationRepository.getAllApplications();
@@ -83,7 +88,7 @@ public class CardApplicationServiceImpl implements CardApplicationService {
 
         return cardApplicationRepository.getAllApplications()
                 .stream()
-                .filter(a -> filterID.contains(a.getDetails().getDriverID()))
+                .filter(c -> c.getDetails().getDriverID().contains(filterID))
                 .collect(Collectors.toList());
     }
 
