@@ -6,8 +6,11 @@ import com.telerikacademy.drivingcardserver.models.User;
 import com.telerikacademy.drivingcardserver.models.enums.CardApplicationStatus;
 import com.telerikacademy.drivingcardserver.repositories.cardapplicationrepository.CardApplicationRepositoryImpl;
 import com.telerikacademy.drivingcardserver.repositories.cardapplicationrepository.base.CardApplicationRepository;
+import com.telerikacademy.drivingcardserver.repositories.userrepository.UserRepositoryImpl;
 import com.telerikacademy.drivingcardserver.services.userservice.CardApplicationServiceImpl;
+import com.telerikacademy.drivingcardserver.services.userservice.UserServiceImpl;
 import com.telerikacademy.drivingcardserver.services.userservice.base.CardApplicationService;
+import com.telerikacademy.drivingcardserver.services.userservice.base.UserService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -32,7 +35,7 @@ import static com.telerikacademy.drivingcardserver.models.enums.CardApplicationS
 
 
 @RunWith(MockitoJUnitRunner.class)
-public class GetMyDriverCard_REST_Tests {
+public class GetMyDriverCard_CardApplicationService_Tests {
 
 User user=new User();
 String date1="2011-11-11";
@@ -50,7 +53,7 @@ PersonalDetails persDetails= new PersonalDetails("9602180077","Todor","Slavov");
 
     );
 
-    public GetMyDriverCard_REST_Tests() throws ParseException {
+    public GetMyDriverCard_CardApplicationService_Tests() throws ParseException {
     }
 
     @Test
@@ -194,6 +197,7 @@ public void UpdateCardAppStatusAndCheckIfItHasChanged() {
         Assert.assertEquals(filterDate, cardApp.getDateOfSubmission());
 
     }
+
 
 
 
