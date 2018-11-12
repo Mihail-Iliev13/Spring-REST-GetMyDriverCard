@@ -19,7 +19,7 @@ public class ImageServiceImpl implements ImageService {
     private ImageRepository imageRepository;
 
     @Autowired
-    public ImageServiceImpl (ImageRepository imageRepository, UserRepository userRepository) {
+    public ImageServiceImpl (ImageRepository imageRepository) {
         this.imageRepository = imageRepository;
     }
 

@@ -1,9 +1,9 @@
-package com.telerikacademy.drivingcardserver.services.userservice;
+package com.telerikacademy.drivingcardserver.services.cardapplicationservice;
 
 import com.telerikacademy.drivingcardserver.models.CardApplication;
 import com.telerikacademy.drivingcardserver.models.enums.CardApplicationStatus;
 import com.telerikacademy.drivingcardserver.repositories.cardapplicationrepository.CardApplicationRepositoryImpl;
-import com.telerikacademy.drivingcardserver.services.userservice.base.CardApplicationService;
+import com.telerikacademy.drivingcardserver.services.cardapplicationservice.base.CardApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

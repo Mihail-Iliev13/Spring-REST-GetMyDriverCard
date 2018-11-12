@@ -66,10 +66,11 @@ public class User implements Serializable {
     }
 
     public void setCardApplication(CardApplication cardApp) {
-        if(cardApplications == null){
-            cardApplications= new ArrayList<>();
+        if (cardApplications == null){
+            cardApplications = new ArrayList<>();
             this.cardApplications.add(cardApp);
-        }else
-        this.cardApplications.add(cardApp);
+        } else {
+            this.cardApplications.add(cardApp);
+        }
     }
 }

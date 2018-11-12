@@ -1,4 +1,4 @@
-package com.telerikacademy.drivingcardserver.services.userservice.base;
+package com.telerikacademy.drivingcardserver.services.cardapplicationservice.base;
 
 import com.telerikacademy.drivingcardserver.models.CardApplication;
 import com.telerikacademy.drivingcardserver.models.enums.CardApplicationStatus;

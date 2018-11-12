@@ -57,27 +57,9 @@ public class PersonalDetails {
     @Column(name = "email")
     private String email;
 
-//    @Column(name = "selfie_image")
-//    @Lob
-//    private byte[] selfie;
-//
-//    @Column(name = "id_card_image")
-//    @Lob
-//    private byte[] idCardImage;
-//
-//    @Column(name = "driving_license_image")
-//    @Lob
-//    private byte[] drivingLicenseImage;
-
     @Column(name = "signature")
     @Lob
     private byte[] signature;
-
-
-//    //Optional fields
-//    @Column(name = "old_card_image")
-//    @Lob
-//    private byte[] previousCardImage;
 
     @Column(name = "country_issued_card")
     private String countryIssuedCard;
@@ -171,30 +153,6 @@ public class PersonalDetails {
         this.email = email;
     }
 
-//    public byte[] getSelfie() {
-//        return selfie;
-//    }
-//
-//    public void setSelfie(byte[] selfie) {
-//        this.selfie = selfie;
-//    }
-//
-//    public byte[] getIdCardImage() {
-//        return idCardImage;
-//    }
-//
-//    public void setIdCardImage(byte[] idCardImage) {
-//        this.idCardImage = idCardImage;
-//    }
-//
-//    public byte[] getDrivingLicenseImage() {
-//        return drivingLicenseImage;
-//    }
-//
-//    public void setDrivingLicenseImage(byte[] drivingLicenseImage) {
-//        this.drivingLicenseImage = drivingLicenseImage;
-//    }
-
     public byte[] getSignature() {
         return signature;
     }
@@ -202,14 +160,6 @@ public class PersonalDetails {
     public void setSignature(byte[] signature) {
         this.signature = signature;
     }
-
-//    public byte[] getPreviousCardImage() {
-//        return previousCardImage;
-//    }
-
-//    public void setPreviousCardImage(byte[] previousCardImage) {
-//        this.previousCardImage = previousCardImage;
-//    }
 
     public String getCountryIssuedCard() {
         return countryIssuedCard;

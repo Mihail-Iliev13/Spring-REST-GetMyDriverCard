@@ -3,7 +3,7 @@ package com.telerikacademy.drivingcardserver.controllers;
 
 import com.telerikacademy.drivingcardserver.models.CardApplication;
 import com.telerikacademy.drivingcardserver.models.enums.CardApplicationStatus;
-import com.telerikacademy.drivingcardserver.services.userservice.base.CardApplicationService;
+import com.telerikacademy.drivingcardserver.services.cardapplicationservice.base.CardApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,9 +24,7 @@ public class CardApplicationController {
 
     @GetMapping
     public List<CardApplication> getAllApplications() {
-
-     List<CardApplication> cardApplications = cardApplicationService.getAllApplications();
-     return cardApplications;
+        return cardApplicationService.getAllApplications();
     }
 
     @GetMapping("/{id}")
